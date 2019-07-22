@@ -2,7 +2,7 @@ var fs = require('fs');
 var Twit = require('twit');
 
 const handle = '@GizmoSaysHello';
-const match = /[😻🐈😹😸🐱😼😺😿😾😽🙀🦁🐯🐅]/;
+const match = /[😻🐈😹😸🐱😼😺😿😾😽🙀🦁🐯🐅]/g;
 
 var app = {
 	start: function () {
@@ -62,11 +62,17 @@ var app = {
 		},
 
 		read: function (tweet) {
-			console.log('I heard you');
+			var tweetText = (tweet.extended_tweet && tweet.extended_tweet.full_text) || tweet.text;
 
-			if (match.test(tweet.text)) {
-				console.log('I\'m going to reply');
+			console.log('');
+			console.log(`I heard you, @${tweet.user.screen_name}. You said:`);
+			console.log(tweetText);
+
+			if (match.test(tweetText)) {
+				console.log('I\'m going to reply.');
 				app.reply.reply(tweet);
+			} else {
+				console.log('I won\'t reply.');
 			}
 		}
 	},
@@ -137,7 +143,8 @@ var app = {
 					};
 
 					app.T.post('statuses/update', params, function (err, data, response) {
-						console.log(data);
+						console.log(`I replied successfully to @${tweet.user.screen_name}:`);
+						console.log(reply);
 					});
 				}
 			};
