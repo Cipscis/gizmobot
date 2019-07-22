@@ -1,0 +1,14 @@
+{
+  "name": "Gizmobot",
+  "version": "1.0.0",
+  "description": "A Twitter bot for tweeting photos of Gizmo",
+  "dependencies": {
+    "twit": "^2.2.11"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "url": "https://github.com/Cipscis/gizmobot.git"
+  }
+}
