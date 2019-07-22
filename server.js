@@ -2,7 +2,7 @@ var fs = require('fs');
 var Twit = require('twit');
 
 const handle = '@GizmoSaysHello';
-const match = /[😻🐈😹😸🐱😼😺😿😾😽🙀🦁🐯🐅]/g;
+const emoji = ['😻', '🐈', '😹', '😸', '🐱', '😼', '😺', '😿', '😾', '😽', '🙀', '🦁', '🐯', '🐅'];
 
 var app = {
 	start: function () {
@@ -68,7 +68,15 @@ var app = {
 			console.log(`I heard you, @${tweet.user.screen_name}. You said:`);
 			console.log(tweetText);
 
-			if (match.test(tweetText)) {
+			var match = false;
+			for (let i = 0; i < emoji.length; i++) {
+				if (tweetText.indexOf(emoji[i]) !== -1) {
+					match = true;
+					break;
+				}
+			}
+
+			if (match) {
 				console.log('I\'m going to reply.');
 				app.reply.reply(tweet);
 			} else {
