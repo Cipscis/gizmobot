@@ -5,7 +5,7 @@
 			"image": "20150118_184135_Richtone(HDR).jpg",
 			"alt": "Gizmo the cat sitting regally atop a pile of cushions, with the blue sky shining through a sheer curtain behind him.",
 			"text": "What do you think of my throne?",
-			"chance": 5
+			"chance": 8
 		},
 		{
 			"image": "20160222_233251.jpg",
@@ -17,7 +17,7 @@
 			"image": "20160304_080228.jpg",
 			"alt": "Gizmo the cat looking up at the camera from atop a small cat tower.",
 			"text": "Hi! 😺",
-			"chance": 7
+			"chance": 8
 		},
 		{
 			"image": "20190516_120939.jpg",
@@ -29,7 +29,7 @@
 			"image": "34334482_637939143710_7547936716665913344_n (1).jpg",
 			"alt": "Gizmo the cat sitting on his heated blanket, looking as though he's posing for a portrait.",
 			"text": "How much longer do I have to hold still?",
-			"chance": 6
+			"chance": 12
 		},
 		{
 			"image": "DQ0h1SfV4AIJQ5f.jpg",
@@ -41,13 +41,13 @@
 			"image": "IMG_0515.jpg",
 			"alt": "Gizmo the cat as a kitten, sitting at the base of a cat tower.",
 			"text": "Oh no, baby photos 😹",
-			"chance": 1
+			"chance": 4
 		},
 		{
 			"image": "IMG_20180604_190453.jpg",
 			"alt": "Gizmo the cat curled up asleep on a blanket stretched over Mark's knees.",
 			"text": "I'm safe, I'm warm, I'm happy. I hope you are too 💖",
-			"chance": 10
+			"chance": 15
 		},
 		{
 			"image": "IMG_20180604_191522.jpg",
@@ -59,7 +59,7 @@
 			"image": "IMG_20180607_192854.jpg",
 			"alt": "Gizmo the cat curled up asleep with his paw stretched out and placed on Mark's hand.",
 			"text": "I hope you're doing okay ❤",
-			"chance": 11
+			"chance": 12
 		},
 		{
 			"image": "IMG_20180613_195142.jpg",
@@ -71,7 +71,7 @@
 			"image": "IMG_20180708_211301.jpg",
 			"alt": "Gizmo the cat lying asleep over Mark's knee in front of the fireplace, with both his front paws stretched way out in front of him.",
 			"text": "I'm so warm... I think I'm melting...",
-			"chance": 6
+			"chance": 8
 		},
 		{
 			"image": "IMG_20180730_152948.jpg",
@@ -101,13 +101,13 @@
 			"image": "IMG_20180818_141226.jpg",
 			"alt": "Close up shot of Gizmo the cat's face as he watches the lawn.",
 			"text": "Yes, those are rainbows in my fur 🌈",
-			"chance": 12
+			"chance": 14
 		},
 		{
 			"image": "IMG_20180818_145106.jpg",
 			"alt": "Gizmo the cat sleeping on the carpet in the sunlight next to a red plastic rod that is part of one of his toys.",
 			"text": "Afternoon snooze ☀💤",
-			"chance": 15
+			"chance": 14
 		},
 		{
 			"image": "IMG_20180821_185909.jpg",
@@ -137,7 +137,7 @@
 			"image": "IMG_20180913_194949.jpg",
 			"alt": "Gizmo the cat sitting on Mark's desk next to his laptop, beneath a lamp, looking back over his shoulder dramatically.",
 			"text": "Does this look dramatic enough?",
-			"chance": 5
+			"chance": 6
 		},
 		{
 			"image": "IMG_20180923_151525.jpg",
@@ -185,7 +185,7 @@
 			"image": "IMG_20190421_084602.jpg",
 			"alt": "Close up of Gizmo the cat's face as he lies in his hammock on top of his cat tower.",
 			"text": "Hello! 💖",
-			"chance": 15
+			"chance": 16
 		},
 		{
 			"image": "IMG_20190424_174408.jpg",
@@ -201,9 +201,9 @@
 		},
 		{
 			"image": "20190721_163600(0).jpg",
-			"alt": "Gizmo the cat sitting[ politely on his knitted mat on Mark's desk, looking at the camera.",
+			"alt": "Gizmo the cat sitting politely on his knitted mat on Mark's desk, looking at the camera.",
 			"text": "Hi! I hope you're having a good day today",
-			"chance": 15
+			"chance": 16
 		},
 		{
 			"image": "20190721_132407.jpg",
@@ -230,12 +230,6 @@
 			"chance": 5
 		},
 		{
-			"image": "breathing 2.gif",
-			"alt": "Gizmo the cat lying on the edge of a bed with his paws dangling off the edge, breathing slowly.",
-			"text": "Remember to breathe...",
-			"chance": 10
-		},
-		{
 			"image": "breathing 3.gif",
 			"alt": "Gizmo the cat sleeping in the sunlight next to a laundry basket, breathing slowly.",
 			"text": "This is a very good nap ☀💤💖",
@@ -245,19 +239,13 @@
 			"image": "breathing on mat.gif",
 			"alt": "Gizmo the cat sleeping on his knitted mat and breathing slowly.",
 			"text": "It's good to just stop for a while, occasionally. Please take a break if you need one ❤",
-			"chance": 30
+			"chance": 20
 		},
 		{
 			"image": "burrowing.gif",
 			"alt": "Close up of Gizmo the cat's face as he happily kneads a red dressing gown.",
 			"text": "I'm safe 🌈 I'm warm ☀ I'm happy 😻",
-			"chance": 50
-		},
-		{
-			"image": "dreaming.gif",
-			"alt": "Gizmo the cat twitching in his sleep.",
-			"text": "Dreaming of moths 🌙💤",
-			"chance": 20
+			"chance": 30
 		},
 		{
 			"image": "eyes.gif",

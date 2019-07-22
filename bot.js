@@ -1,30 +1,26 @@
-var fs = require('fs');
-var Twit = require('twit');
+const dotenv = require('dotenv');
+dotenv.config();
+
+const fs = require('fs');
+const Twit = require('twit');
 
 const handle = '@GizmoSaysHello';
 const emoji = ['😻', '🐈', '😹', '😸', '🐱', '😼', '😺', '😿', '😾', '😽', '🙀', '🦁', '🐯', '🐅'];
 
-var app = {
+const app = {
 	start: function () {
-		app.init.readConfig();
+		app.init.initTwit();
 		app.init.readLibrary();
 	},
 
 	init: {
-		readConfig: function () {
-			// config.json contains this app's API keys, which are secret
-			fs.readFile('config.json', 'utf-8', app.init._onConfigRead);
-		},
-
-		_onConfigRead: function (err, data) {
-			if (err) {
-				console.error('ERROR: Failure to read config:', err);
-				return;
-			}
-
-			var config = JSON.parse(data);
-
-			app.T = new Twit(config);
+		initTwit: function (err, data) {
+			app.T = new Twit({
+				consumer_key: process.env.CONSUMER_KEY,
+				consumer_secret: process.env.CONSUMER_SECRET,
+				access_token: process.env.ACCESS_TOKEN,
+				access_token_secret: process.env.ACCESS_TOKEN_SECRET
+			});
 			app.init._checkIsLoaded();
 		},
 
@@ -44,7 +40,7 @@ var app = {
 		},
 
 		_checkIsLoaded: function () {
-			var isLoaded = app.T && app.library;
+			let isLoaded = app.T && app.library;
 
 			if (isLoaded) {
 				app.listen.start();
@@ -56,19 +52,19 @@ var app = {
 		start: function () {
 			console.log('I\'m listening!');
 
-			var stream = app.T.stream('statuses/filter', { track: [handle] });
+			let stream = app.T.stream('statuses/filter', { track: [handle] });
 
 			stream.on('tweet', app.listen.read);
 		},
 
 		read: function (tweet) {
-			var tweetText = (tweet.extended_tweet && tweet.extended_tweet.full_text) || tweet.text;
+			let tweetText = (tweet.extended_tweet && tweet.extended_tweet.full_text) || tweet.text;
 
 			console.log('');
 			console.log(`I heard you, @${tweet.user.screen_name}. You said:`);
 			console.log(tweetText);
 
-			var match = false;
+			let match = false;
 			for (let i = 0; i < emoji.length; i++) {
 				if (tweetText.indexOf(emoji[i]) !== -1) {
 					match = true;
@@ -87,15 +83,15 @@ var app = {
 
 	reply: {
 		reply: function (tweet, reply) {
-			var reply = reply || app.reply._generate(tweet);
+			reply = reply || app.reply._generate(tweet);
 
 			app.reply._uploadMedia(tweet, reply);
 		},
 
 		_generate: function (tweet) {
-			var libraryTotal = app.library.replies.reduce((sum, reply, i) => sum + reply.chance, 0);
-			var seed = Math.random() * libraryTotal;
-			var reply;
+			let libraryTotal = app.library.replies.reduce((sum, reply, i) => sum + reply.chance, 0);
+			let seed = Math.random() * libraryTotal;
+			let reply;
 
 			let progress = 0;
 			for (let i = 0; i < app.library.replies.length; i++) {
@@ -111,7 +107,7 @@ var app = {
 		},
 
 		_uploadMedia: function (tweet, reply) {
-			var image = fs.readFileSync(`${app.library.path}/${reply.image}`, { encoding: 'base64' });
+			let image = fs.readFileSync(`${app.library.path}/${reply.image}`, { encoding: 'base64' });
 
 			app.T.post(
 				'media/upload',
@@ -124,9 +120,9 @@ var app = {
 
 		_createMediaMetadata: function (tweet, reply) {
 			return function (err, data, response) {
-				var mediaIdStr = data.media_id_string;
-				var altText = reply.alt;
-				var meta_params = {
+				let mediaIdStr = data.media_id_string;
+				let altText = reply.alt;
+				let meta_params = {
 					media_id: mediaIdStr,
 					alt_text: {
 						text: altText
@@ -144,7 +140,7 @@ var app = {
 		_sendReply: function (tweet, reply, mediaIdStr) {
 			return function (err, data, response) {
 				if (!err) {
-					var params = {
+					let params = {
 						status: `@${tweet.user.screen_name} ${reply.text}`,
 						in_reply_to_status_id: tweet.id_str,
 						media_ids: [mediaIdStr]
