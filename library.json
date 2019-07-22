@@ -1,0 +1,269 @@
+{
+	"path": "images",
+	"replies": [
+		{
+			"image": "20150118_184135_Richtone(HDR).jpg",
+			"alt": "Gizmo the cat sitting regally atop a pile of cushions, with the blue sky shining through a sheer curtain behind him.",
+			"text": "What do you think of my throne?",
+			"chance": 5
+		},
+		{
+			"image": "20160222_233251.jpg",
+			"alt": "Blurry photo of Gizmo the cat being held aloft by Mark as he hunts for a moth. Only Gizmo's face is in focus.",
+			"text": "Did you see where that moth went?",
+			"chance": 5
+		},
+		{
+			"image": "20160304_080228.jpg",
+			"alt": "Gizmo the cat looking up at the camera from atop a small cat tower.",
+			"text": "Hi! 😺",
+			"chance": 7
+		},
+		{
+			"image": "20190516_120939.jpg",
+			"alt": "Gizmo the cat lying on his knitted mat, with a sunlit window behind him.",
+			"text": "Hope you're having a nice, relaxing day ☀",
+			"chance": 8
+		},
+		{
+			"image": "34334482_637939143710_7547936716665913344_n (1).jpg",
+			"alt": "Gizmo the cat sitting on his heated blanket, looking as though he's posing for a portrait.",
+			"text": "How much longer do I have to hold still?",
+			"chance": 6
+		},
+		{
+			"image": "DQ0h1SfV4AIJQ5f.jpg",
+			"alt": "Gizmo the cat sitting on a bookshelf in partial sunlight, looking inquisitively up at the camera.",
+			"text": "Oh, there you are. Hello!",
+			"chance": 10
+		},
+		{
+			"image": "IMG_0515.jpg",
+			"alt": "Gizmo the cat as a kitten, sitting at the base of a cat tower.",
+			"text": "Oh no, baby photos 😹",
+			"chance": 1
+		},
+		{
+			"image": "IMG_20180604_190453.jpg",
+			"alt": "Gizmo the cat curled up asleep on a blanket stretched over Mark's knees.",
+			"text": "I'm safe, I'm warm, I'm happy. I hope you are too 💖",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20180604_191522.jpg",
+			"alt": "Gizmo the cat lying on a blanket stretched over Mark's knees, with his belly turned up, cheekily looking at the camera.",
+			"text": "...belly rubs?",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20180607_192854.jpg",
+			"alt": "Gizmo the cat curled up asleep with his paw stretched out and placed on Mark's hand.",
+			"text": "I hope you're doing okay ❤",
+			"chance": 11
+		},
+		{
+			"image": "IMG_20180613_195142.jpg",
+			"alt": "Gizmo the cat loafing in front of a fireplace, looking at the camera with large eyes.",
+			"text": "Ahhh so warm 🔥💛🔥",
+			"chance": 8
+		},
+		{
+			"image": "IMG_20180708_211301.jpg",
+			"alt": "Gizmo the cat lying asleep over Mark's knee in front of the fireplace, with both his front paws stretched way out in front of him.",
+			"text": "I'm so warm... I think I'm melting...",
+			"chance": 6
+		},
+		{
+			"image": "IMG_20180730_152948.jpg",
+			"alt": "Gizmo the cat curled up behind a curtain in the sunlight, looking at the camera.",
+			"text": "Love that afternoon sunlight ☀",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20180731_143849.jpg",
+			"alt": "Gizmo the cat curled up next to Mark's hip in bed, looking at the camera.",
+			"text": "So cozy ❤",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20180805_112759.jpg",
+			"alt": "Gizmo the cat curled up asleep on a blanket with his paw covering his face.",
+			"text": "I'm having a snooze 💤",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20180818_105536.jpg",
+			"alt": "Gizmo the cat loafing in sunlight shining through a set of blinds, projecting lines of shadow onto him.",
+			"text": "Do you like my stripes? 🐅",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20180818_141226.jpg",
+			"alt": "Close up shot of Gizmo the cat's face as he watches the lawn.",
+			"text": "Yes, those are rainbows in my fur 🌈",
+			"chance": 12
+		},
+		{
+			"image": "IMG_20180818_145106.jpg",
+			"alt": "Gizmo the cat sleeping on the carpet in the sunlight next to a red plastic rod that is part of one of his toys.",
+			"text": "Afternoon snooze ☀💤",
+			"chance": 15
+		},
+		{
+			"image": "IMG_20180821_185909.jpg",
+			"alt": "Gizmo the cat sitting on Mark's desk, looking back at the camera with curtains behind him.",
+			"text": "This is one of my favourite spots!",
+			"chance": 8
+		},
+		{
+			"image": "IMG_20180825_095628.jpg",
+			"alt": "Gizmo the cat curled up in the sunlight against Mark's outstretched feet, with his ears brightly backlit by the sun.",
+			"text": "My ears are burning, was someone talking about me?",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20180825_162856.jpg",
+			"alt": "Close up shot of Gizmo the cat as he looks out of a window.",
+			"text": "I have a great view from this window",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20180828_184013.jpg",
+			"alt": "Gizmo the cat sitting on Mark's shoulder, sniffing at a wall.",
+			"text": "Mark helps me explore the house sometimes",
+			"chance": 1
+		},
+		{
+			"image": "IMG_20180913_194949.jpg",
+			"alt": "Gizmo the cat sitting on Mark's desk next to his laptop, beneath a lamp, looking back over his shoulder dramatically.",
+			"text": "Does this look dramatic enough?",
+			"chance": 5
+		},
+		{
+			"image": "IMG_20180923_151525.jpg",
+			"alt": "Close up of Gizmo the cat's face as he looks out a window.",
+			"text": "This couch gets so much sun in the afternoon 💛☀",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20180923_152917.jpg",
+			"alt": "Close up of half Gizmo the cat's face in the sunlight.",
+			"text": "Did you know I used to have golden eyes instead of green ones? It's true!",
+			"chance": 8
+		},
+		{
+			"image": "IMG_20181025_124535.jpg",
+			"alt": "Gizmo the cat lying on his back on a bed, cheekily showing his belly.",
+			"text": "Can I please get some belly rubs?",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20181031_103008.jpg",
+			"alt": "Gizmo the cat sitting in a paper bag in the sunlight, looking directly up at the camera.",
+			"text": "This is a pretty good bag!",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20181106_133750.jpg",
+			"alt": "Gizmo the cat asleep on his blue knitted mat.",
+			"text": "Mark knitted this mat for me, it's very comfy 💙",
+			"chance": 12
+		},
+		{
+			"image": "IMG_20181110_172826.jpg",
+			"alt": "Gizmo the cat sitting behind a curtain, enjoying the afternoon sunlight and looking up past the camera.",
+			"text": "Oh, hello! You found my afternoon hiding spot",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20190210_190928.jpg",
+			"alt": "Close up of Gizmo the cat's face as he lies on his blue knitted mat.",
+			"text": "I'm so comfy right now, I never want to move",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20190421_084602.jpg",
+			"alt": "Close up of Gizmo the cat's face as he lies in his hammock on top of his cat tower.",
+			"text": "Hello! 💖",
+			"chance": 15
+		},
+		{
+			"image": "IMG_20190424_174408.jpg",
+			"alt": "Gizmo the cat hiding in a red and blue plastic shopping bag, looking out with very large eyes.",
+			"text": "Shhh, don't tell Mark. I'm waiting to ambush him when he walks past",
+			"chance": 10
+		},
+		{
+			"image": "IMG_20190525_150820.jpg",
+			"alt": "Gizmo the cat and Mark asleep together on the couch in the afternoon sun.",
+			"text": "Afternoon naps in the sun with my best friend are my favourite thing 💖💖",
+			"chance": 10
+		},
+		{
+			"image": "20190721_163600(0).jpg",
+			"alt": "Gizmo the cat sitting[ politely on his knitted mat on Mark's desk, looking at the camera.",
+			"text": "Hi! I hope you're having a good day today",
+			"chance": 15
+		},
+		{
+			"image": "20190721_132407.jpg",
+			"alt": "Gizmo the cat crouching in a paper bag.",
+			"text": "I like this new bag, much better than the old plastic ones were",
+			"chance": 10
+		},
+		{
+			"image": "20190720_083306.jpg",
+			"alt": "Extreme close up of Gizmo the cat's face, with very large eyes.",
+			"text": "FEED ME!",
+			"chance": 2
+		},
+		{
+			"image": "20190719_184912.jpg",
+			"alt": "Gizmo the cat lying in his tunnel, with very large eyes.",
+			"text": "It's tunnel time 😺",
+			"chance": 10
+		},
+		{
+			"image": "bag.gif",
+			"alt": "Gizmo walking into a blue fabric bag, which is being held open for him.",
+			"text": "I miss my old bag. It was great",
+			"chance": 5
+		},
+		{
+			"image": "breathing 2.gif",
+			"alt": "Gizmo the cat lying on the edge of a bed with his paws dangling off the edge, breathing slowly.",
+			"text": "Remember to breathe...",
+			"chance": 10
+		},
+		{
+			"image": "breathing 3.gif",
+			"alt": "Gizmo the cat sleeping in the sunlight next to a laundry basket, breathing slowly.",
+			"text": "This is a very good nap ☀💤💖",
+			"chance": 15
+		},
+		{
+			"image": "breathing on mat.gif",
+			"alt": "Gizmo the cat sleeping on his knitted mat and breathing slowly.",
+			"text": "It's good to just stop for a while, occasionally. Please take a break if you need one ❤",
+			"chance": 30
+		},
+		{
+			"image": "burrowing.gif",
+			"alt": "Close up of Gizmo the cat's face as he happily kneads a red dressing gown.",
+			"text": "I'm safe 🌈 I'm warm ☀ I'm happy 😻",
+			"chance": 50
+		},
+		{
+			"image": "dreaming.gif",
+			"alt": "Gizmo the cat twitching in his sleep.",
+			"text": "Dreaming of moths 🌙💤",
+			"chance": 20
+		},
+		{
+			"image": "eyes.gif",
+			"alt": "Gizmo the cat's eyes going from normal sized to very big.",
+			"text": "Ambush time!",
+			"chance": 6
+		}
+	]
+}
