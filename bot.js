@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 const express = require('express');
 const fs = require('fs');
+const http = require('http');
 const Twit = require('twit');
 
 dotenv.config();
@@ -16,6 +17,11 @@ const app = {
 	start: function () {
 		app.init.initTwit();
 		app.init.readLibrary();
+
+		if (process.env.ENVIRONMENT === 'heroku') {
+			// Ping the Heroku app every 30 minutes
+			setInterval(app.listen.keepAwake, 1000*60*30);
+		}
 	},
 
 	init: {
@@ -83,6 +89,12 @@ const app = {
 			} else {
 				console.log('I won\'t reply.');
 			}
+		},
+
+		keepAwake: function () {
+			console.log('');
+			console.log('Keeping awake');
+			http.get('http://gizmo-bot.herokuapp.com/');
 		}
 	},
 
