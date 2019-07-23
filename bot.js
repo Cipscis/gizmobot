@@ -19,8 +19,8 @@ const app = {
 		app.init.readLibrary();
 
 		if (process.env.ENVIRONMENT === 'heroku') {
-			// Ping the Heroku app every 30 minutes
-			setInterval(app.listen.keepAwake, 1000*60*30);
+			// Ping the Heroku app every 5 minutes
+			setInterval(app.listen.keepAwake, 1000*60*5);
 		}
 	},
 
