@@ -1,8 +1,13 @@
 const dotenv = require('dotenv');
-dotenv.config();
-
+const express = require('express');
 const fs = require('fs');
 const Twit = require('twit');
+
+dotenv.config();
+
+const server = express();
+server.set('port', process.env.PORT || 5000);
+
 
 const handle = '@GizmoSaysHello';
 const emoji = ['😻', '🐈', '😹', '😸', '🐱', '😼', '😺', '😿', '😾', '😽', '🙀', '🦁', '🐯', '🐅'];
@@ -156,4 +161,4 @@ const app = {
 	}
 };
 
-app.start();
+server.listen(server.get('port'), app.start);
