@@ -10,7 +10,7 @@ const server = express();
 server.set('port', process.env.PORT || 5000);
 
 
-const handle = process.env.HANDLE || '@GizmoSaysHello';
+const handle = process.env.HANDLE || 'GizmoSaysHello';
 const emoji = ['😻', '🐈', '😹', '😸', '🐱', '😼', '😺', '😿', '😾', '😽', '🙀', '🦁', '🐯', '🐅'];
 
 const app = {
@@ -115,6 +115,10 @@ const app = {
 
 		read: function (tweet) {
 			let tweetText = (tweet.extended_tweet && tweet.extended_tweet.full_text) || tweet.text;
+
+			if (tweet.user.screen_name.toLowerCase() === handle.toLowerCase()) {
+				return;
+			}
 
 			console.log('');
 			console.log(`I heard you, @${tweet.user.screen_name}. You said:`);
