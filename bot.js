@@ -117,6 +117,7 @@ const app = {
 			let tweetText = (tweet.extended_tweet && tweet.extended_tweet.full_text) || tweet.text;
 
 			if (tweet.user.screen_name.toLowerCase() === handle.toLowerCase()) {
+				console.log(`I heard you, @${tweet.user.screen_name}, but that's me so I'm going to ignore it.`);
 				return;
 			}
 
