@@ -224,12 +224,6 @@
 			"chance": 10
 		},
 		{
-			"image": "bag.gif",
-			"alt": "Gizmo walking into a blue fabric bag, which is being held open for him.",
-			"text": "I miss my old bag. It was great",
-			"chance": 5
-		},
-		{
 			"image": "breathing 3.gif",
 			"alt": "Gizmo the cat sleeping in the sunlight next to a laundry basket, breathing slowly.",
 			"text": "This is a very good nap ☀💤💖",

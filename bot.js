@@ -209,8 +209,13 @@ const app = {
 					};
 
 					app.T.post('statuses/update', params, function (err, data, response) {
-						console.log(`I replied successfully to @${tweet.user.screen_name}:`);
-						console.log(reply);
+						if (err) {
+							console.error('I tried to reply, but there was an error:');
+							console.error(err);
+						} else {
+							console.log(`I replied successfully to @${tweet.user.screen_name}:`);
+							console.log(reply);
+						}
 					});
 				}
 			};
