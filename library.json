@@ -252,6 +252,73 @@
 			"alt": "Gizmo the cat's eyes going from normal sized to very big.",
 			"text": "Ambush time!",
 			"chance": 6
+		},
+
+		{
+			"image": "20190509_200654.jpg",
+			"alt": "Gizmo the cat's face barely peeking out from beneath a jacket that is laid over a full laundry basket.",
+			"text": "Welcome to my lair 😈",
+			"chance": 10
+		},
+		{
+			"image": "20190516_120925.jpg",
+			"alt": "Gizmo the cat loafing on his blue knitted mat next to a sunlit window, looking away from the window.",
+			"text": "This is a nice warm spot on my nice comfy mat 💙",
+			"chance": 10
+		},
+		{
+			"image": "20190516_122439.jpg",
+			"alt": "Gizmo the cat sleeping in the sunlight on his blue knitted mat, with his paws stretched out towards the camera and his face resting against a pile of books on alternative medicine.",
+			"text": "These books are giving me some weird dreams",
+			"chance": 5
+		},
+		{
+			"image": "20190523_072020.jpg",
+			"alt": "Gizmo the cat standing on Mark's legs, looking off to the side with very large eyes.",
+			"text": "Quiet! I think I heard something...",
+			"chance": 10
+		},
+		{
+			"image": "20190523_215422.jpg",
+			"alt": "Gizmo the cat curled up on top of a red jacket, which is draped over a laundry basket.",
+			"text": "This jacket is super comfy",
+			"chance": 10
+		},
+		{
+			"image": "20190528_145003.jpg",
+			"alt": "Gizmo the cat curled up on a red dressing gown, looking grumpily at the camera without lifting his head.",
+			"text": "I'm trying to sleep... but you may pat me",
+			"chance": 10
+		},
+		{
+			"image": "20190601_201740.jpg",
+			"alt": "Gizmo the cat lying on his back on a blanket, offering his belly for some belly rubs.",
+			"text": "Oh no my belly is so cold, someone should rub it to keep my warm.",
+			"chance": 10
+		},
+		{
+			"image": "20190606_175954.jpg",
+			"alt": "Gizmo the cat sitting very alertly by Mark's feet, looking at the camera.",
+			"text": "It's dinner time, rightt?",
+			"chance": 10
+		},
+		{
+			"image": "20190611_211353.jpg",
+			"alt": "Gizmo the cat curled up in a heart shape on a red jacket.",
+			"text": "💖",
+			"chance": 20
+		},
+		{
+			"image": "20190615_145156.jpg",
+			"alt": "Gizmo the cat looking sleepily at the camera while loafing on his sleeping mat.",
+			"text": "You just woke me up, I think I deserve some treats for this interruption.",
+			"chance": 10
+		},
+		{
+			"image": "20190630_104410.jpg",
+			"alt": "Gizmo the cat sitting in his tunnel in the sunlight, looking to the side out of its entrance.",
+			"text": "I love my tunnel 💜",
+			"chance": 10
 		}
 	]
 }

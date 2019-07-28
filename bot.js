@@ -10,11 +10,13 @@ const server = express();
 server.set('port', process.env.PORT || 5000);
 
 
-const handle = '@GizmoSaysHello';
+const handle = process.env.HANDLE || '@GizmoSaysHello';
 const emoji = ['😻', '🐈', '😹', '😸', '🐱', '😼', '😺', '😿', '😾', '😽', '🙀', '🦁', '🐯', '🐅'];
 
 const app = {
 	start: function () {
+		console.log('Starting bot...');
+
 		app.init.initTwit();
 		app.init.readLibrary();
 
@@ -46,8 +48,51 @@ const app = {
 				return;
 			}
 
-			app.library = JSON.parse(data);
+			app.library = app.init._validateLibrary(data);
+
 			app.init._checkIsLoaded();
+		},
+
+		_validateLibrary: function (library) {
+			let valid = true;
+			let errors = [];
+
+			try {
+				library = JSON.parse(library);
+
+				for (let i = 0; i < library.replies.length; i++) {
+					let reply = library.replies[i];
+					let replyValid = app.init._validateReply(reply);
+
+					if (replyValid === false) {
+						errors.push(`Reply ${i} is not valid`);
+					}
+
+					valid = valid && replyValid;
+				}
+
+				if (valid === true) {
+					console.log('Successfully validated library');
+					return library;
+				}
+			} catch (e) {
+				valid = false;
+			}
+
+			if (valid === false) {
+				console.error('Error validating library:', errors);
+			}
+		},
+
+		_validateReply: function (reply) {
+			let valid;
+
+			valid = typeof reply.image === 'string' &&
+			        typeof reply.alt === 'string' &&
+			        typeof reply.text === 'string' &&
+			        typeof reply.chance === 'number';
+
+			return valid;
 		},
 
 		_checkIsLoaded: function () {
