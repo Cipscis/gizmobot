@@ -11,7 +11,7 @@ server.set('port', process.env.PORT || 5000);
 
 
 const handle = process.env.HANDLE || 'GizmoSaysHello';
-const postFrequency = (process.env.POST_FREQUENCY || 1) * 60 * 1000; // minutes -> milliseconds
+const postFrequency = (parseInt(process.env.POST_FREQUENCY, 10)) * 60 * 1000; // minutes -> milliseconds
 const emoji = ['😻', '🐈', '😹', '😸', '🐱', '😼', '😺', '😿', '😾', '😽', '🙀', '🦁', '🐯', '🐅'];
 
 let postTimeout;
@@ -155,7 +155,9 @@ const app = {
 		_post: function () {
 			app.tweet.post();
 
-			postTimeout = setTimeout(app.tweet.post, postFrequency);
+			if (postFrequency) {
+				postTimeout = setTimeout(app.tweet.post, postFrequency);
+			}
 		},
 
 		_read: function (tweet) {
@@ -268,7 +270,7 @@ const app = {
 					};
 
 					if (typeof replyingToTweet !== 'undefined') {
-						status = `@${replyingToTweet.user.screen_name} ${status}`;
+						params.status = `@${replyingToTweet.user.screen_name} ${params.status}`;
 						params['in_reply_to_status_id'] = replyingToTweet.id_str;
 					}
 
