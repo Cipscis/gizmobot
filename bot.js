@@ -268,7 +268,7 @@ const app = {
 					};
 
 					if (typeof replyingToTweet !== 'undefined') {
-						status = `@${tweet.user.screen_name} ${status}`;
+						status = `@${replyingToTweet.user.screen_name} ${status}`;
 						params['in_reply_to_status_id'] = replyingToTweet.id_str;
 					}
 
