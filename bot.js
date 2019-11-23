@@ -147,7 +147,9 @@ const app = {
 				postTimeout = undefined;
 			}
 
-			postTimeout = setTimeout(app.listen._post, postFrequency);
+			// postTimeout = setTimeout(app.listen._post, postFrequency);
+			// Post immediately when the app starts
+			app.listen._post();
 		},
 
 		_post: function () {
