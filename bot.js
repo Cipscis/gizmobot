@@ -11,7 +11,12 @@ server.set('port', process.env.PORT || 5000);
 
 
 const handle = process.env.HANDLE || 'GizmoSaysHello';
+const postFrequency = (process.env.POST_FREQUENCY || 1) * 60 * 1000; // minutes -> milliseconds
 const emoji = ['😻', '🐈', '😹', '😸', '🐱', '😼', '😺', '😿', '😾', '😽', '🙀', '🦁', '🐯', '🐅'];
+
+let postTimeout;
+
+const maxFileSize = 5242880;
 
 const app = {
 	start: function () {
@@ -62,7 +67,7 @@ const app = {
 
 				for (let i = 0; i < library.replies.length; i++) {
 					let reply = library.replies[i];
-					let replyValid = app.init._validateReply(reply);
+					let replyValid = app.init._validateEntry(reply, library);
 
 					if (replyValid === false) {
 						errors.push(`Reply ${i} is not valid`);
@@ -71,26 +76,46 @@ const app = {
 					valid = valid && replyValid;
 				}
 
+				for (let i = 0; i < library.posts.length; i++) {
+					let post = library.posts[i];
+					let postValid = app.init._validateEntry(post, library);
+
+					if (postValid === false) {
+						errors.push(`Post ${i} is not valid`);
+					}
+
+					valid = valid && postValid;
+				}
+
 				if (valid === true) {
 					console.log('Successfully validated library');
 					return library;
 				}
 			} catch (e) {
+				console.error(e);
 				valid = false;
 			}
 
 			if (valid === false) {
-				console.error('Error validating library:', errors);
+				console.error(`${errors.length} error${errors.length !== 1 ? 's' : ''} validating library:`, errors);
 			}
 		},
 
-		_validateReply: function (reply) {
-			let valid;
+		_validateEntry: function (entry, library) {
+			let validTypes = typeof entry.image === 'string'
+			        typeof entry.text === 'string' &&
+			        typeof entry.chance === 'number';
 
-			valid = typeof reply.image === 'string' &&
-			        typeof reply.alt === 'string' &&
-			        typeof reply.text === 'string' &&
-			        typeof reply.chance === 'number';
+			let image = library.images[entry.image];
+			let validImage = typeof image !== 'undefined' &&
+			                 typeof image.file === 'string' &&
+			                 typeof image.alt === 'string';
+
+			let valid = validTypes && validImage;
+
+			if (valid !== true) {
+				console.error(`Invalid entry: ${JSON.stringify(entry, null, '\t')}`);
+			}
 
 			return valid;
 		},
@@ -99,29 +124,47 @@ const app = {
 			let isLoaded = app.T && app.library;
 
 			if (isLoaded) {
-				app.listen.start();
+				app.listen.toReply();
+				app.listen.toPost();
 			}
 		}
 	},
 
 	listen: {
-		start: function () {
+		toReply: function () {
 			console.log('I\'m listening!');
 
 			let stream = app.T.stream('statuses/filter', { track: [handle] });
 
-			stream.on('tweet', app.listen.read);
+			stream.on('tweet', app.listen._read);
 		},
 
-		read: function (tweet) {
+		toPost: function () {
+			console.log('I\'m ready to post!');
+
+			if (typeof postTimeout !== 'undefined') {
+				clearTimeout(postTimeout);
+				postTimeout = undefined;
+			}
+
+			postTimeout = setTimeout(app.listen._post, postFrequency);
+		},
+
+		_post: function () {
+			app.tweet.post();
+
+			postTimeout = setTimeout(app.tweet.post, postFrequency);
+		},
+
+		_read: function (tweet) {
 			let tweetText = (tweet.extended_tweet && tweet.extended_tweet.full_text) || tweet.text;
+			console.log('');
 
 			if (tweet.user.screen_name.toLowerCase() === handle.toLowerCase()) {
 				console.log(`I heard you, @${tweet.user.screen_name}, but that's me so I'm going to ignore it.`);
 				return;
 			}
 
-			console.log('');
 			console.log(`I heard you, @${tweet.user.screen_name}. You said:`);
 			console.log(tweetText);
 
@@ -135,34 +178,41 @@ const app = {
 
 			if (match) {
 				console.log('I\'m going to reply.');
-				app.reply.reply(tweet);
+				app.tweet.reply(tweet);
 			} else {
 				console.log('I won\'t reply.');
 			}
 		},
 
 		keepAwake: function () {
-			console.log('');
 			console.log('Keeping awake');
 			http.get('http://gizmo-bot.herokuapp.com/');
 		}
 	},
 
-	reply: {
+	tweet: {
 		reply: function (tweet, reply) {
-			reply = reply || app.reply._generate(tweet);
+			reply = reply || app.tweet._generate(app.library.replies);
 
-			app.reply._uploadMedia(tweet, reply);
+			app.tweet._uploadMedia(reply, tweet);
 		},
 
-		_generate: function (tweet) {
-			let libraryTotal = app.library.replies.reduce((sum, reply, i) => sum + reply.chance, 0);
+		post: function (post) {
+			post = post || app.tweet._generate(app.library.posts);
+
+			app.tweet._uploadMedia(post);
+		},
+
+		_generate: function (library) {
+			library = library || app.library.replies;
+
+			let libraryTotal = library.reduce((sum, reply, i) => sum + reply.chance, 0);
 			let seed = Math.random() * libraryTotal;
 			let reply;
 
 			let progress = 0;
-			for (let i = 0; i < app.library.replies.length; i++) {
-				reply = app.library.replies[i];
+			for (let i = 0; i < library.length; i++) {
+				reply = library[i];
 
 				progress += reply.chance;
 				if (progress > seed) {
@@ -173,22 +223,25 @@ const app = {
 			return reply;
 		},
 
-		_uploadMedia: function (tweet, reply) {
-			let image = fs.readFileSync(`${app.library.path}/${reply.image}`, { encoding: 'base64' });
+		_uploadMedia: function (tweet, replyingToTweet) {
+			let image = app.library.images[tweet.image];
+			let imageFile = fs.readFileSync(`${app.library.path}/${image.file}`, { encoding: 'base64' });
 
 			app.T.post(
 				'media/upload',
 				{
-					media_data: image
+					media_data: imageFile
 				},
-				app.reply._createMediaMetadata(tweet, reply)
+				app.tweet._createMediaMetadata(tweet, replyingToTweet)
 			);
 		},
 
-		_createMediaMetadata: function (tweet, reply) {
+		_createMediaMetadata: function (tweet, replyingToTweet) {
 			return function (err, data, response) {
+				let image = app.library.images[tweet.image];
+
 				let mediaIdStr = data.media_id_string;
-				let altText = reply.alt;
+				let altText = image.alt;
 				let meta_params = {
 					media_id: mediaIdStr,
 					alt_text: {
@@ -199,29 +252,44 @@ const app = {
 				app.T.post(
 					'media/metadata/create',
 					meta_params,
-					app.reply._sendReply(tweet, reply, mediaIdStr)
+					app.tweet._sendTweet(tweet, mediaIdStr, replyingToTweet)
 				);
 			};
 		},
 
-		_sendReply: function (tweet, reply, mediaIdStr) {
+		_sendTweet: function (tweet, mediaIdStr, replyingToTweet) {
 			return function (err, data, response) {
 				if (!err) {
 					let params = {
-						status: `@${tweet.user.screen_name} ${reply.text}`,
-						in_reply_to_status_id: tweet.id_str,
+						status: `${tweet.text}`,
 						media_ids: [mediaIdStr]
 					};
 
+					if (typeof replyingToTweet !== 'undefined') {
+						status = `@${tweet.user.screen_name} ${status}`;
+						params['in_reply_to_status_id'] = replyingToTweet.id_str;
+					}
+
 					app.T.post('statuses/update', params, function (err, data, response) {
 						if (err) {
-							console.error('I tried to reply, but there was an error:');
+							console.error('I tried to tweet, but there was an error:');
+							if (typeof replyingToTweet !== 'undefined') {
+								console.error(`I was trying to reply to ${replyingToTweet.user.screen_name}`);
+							}
 							console.error(err);
 						} else {
-							console.log(`I replied successfully to @${tweet.user.screen_name}:`);
-							console.log(reply);
+							if (typeof replyingToTweet !== 'undefined') {
+								console.log(`I replied successfully to @${replyingToTweet.user.screen_name}:`);
+								console.log(tweet);
+							} else {
+								console.log(`I successfully posted a tweet:`);
+								console.log(tweet);
+							}
 						}
 					});
+				} else {
+					console.error('I tried to tweet, but there was an error creating metadata:');
+					console.error(err);
 				}
 			};
 		}
