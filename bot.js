@@ -238,11 +238,9 @@ const app = {
 		},
 
 		_checkShouldPost: function () {
-			console.log('Checking if I should post');
+			console.log('Checking if I should post...');
 
 			let now = new Date();
-
-			console.log('The current time is:', app.listen._getDateTimeObj(now));
 
 			if (app.listen._isTimePassed(nextPostTime)) {
 				console.log('Posting');
