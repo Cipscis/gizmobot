@@ -11,12 +11,26 @@ server.set('port', process.env.PORT || 5000);
 
 
 const handle = process.env.HANDLE || 'GizmoSaysHello';
-const postFrequency = (parseInt(process.env.POST_FREQUENCY, 10)) * 60 * 1000; // minutes -> milliseconds
 const emoji = ['😻', '🐈', '😹', '😸', '🐱', '😼', '😺', '😿', '😾', '😽', '🙀', '🦁', '🐯', '🐅'];
-
-let postTimeout;
-
 const maxFileSize = 5242880;
+
+
+// Times to post
+const postTimes = [
+	{
+		hours: 9,
+		minutes: 30
+	},
+	{
+		hours: 16,
+		minutes: 30
+	}
+];
+
+// Poll every 7 minutes by defuault to add a little noise to when the posts are sent
+const postIntervalLength = 1000 * 60 * (parseFloat(process.env.POST_INTERVAL_LENGTH) || 7);
+let postInterval;
+let nextPostTime;
 
 const app = {
 	start: function () {
@@ -142,21 +156,100 @@ const app = {
 		toPost: function () {
 			console.log('I\'m ready to post!');
 
-			if (typeof postTimeout !== 'undefined') {
-				clearTimeout(postTimeout);
-				postTimeout = undefined;
-			}
-
-			// postTimeout = setTimeout(app.listen._post, postFrequency);
-			// Post immediately when the app starts
-			app.listen._post();
+			nextPostTime = app.listen._getNextPostTime();
+			postInterval = setInterval(app.listen._checkShouldPost, postIntervalLength);
 		},
 
-		_post: function () {
-			app.tweet.post();
+		_getNextPostTime: function () {
+			let now = new Date();
 
-			if (postFrequency) {
-				postTimeout = setTimeout(app.tweet.post, postFrequency);
+			let nextTime;
+			let nextTimeObj;
+			postTimes.forEach(timeObj => {
+				let time = new Date(now);
+				time.setHours(timeObj.hours);
+				time.setMinutes(timeObj.minutes);
+				time.setSeconds(0);
+
+				// If this time has passed today, set it to tomorrow
+				// Using < to check doesn't work sometimes, for some reason,
+				// so use a custom check instead
+				if (app.listen._isTimePassed(time)) {
+					time.setDate(time.getDate()+1);
+				}
+
+				if (typeof nextTime === 'undefined') {
+					nextTime = time;
+					nextTimeObj = timeObj;
+				} else if (app.listen._isTimePassed(time, nextTime)) {
+					nextTime = time;
+					nextTimeObj = timeObj;
+				}
+			});
+
+			console.log('Next post time:', nextTimeObj);
+
+			return nextTime;
+		},
+
+		_isTimePassed: function (timeToCheck, now) {
+			now = now || new Date();
+
+			let isPassed = false;
+
+			let timeToCheckObj = app.listen._getDateTimeObj(timeToCheck);
+			let nowObj = app.listen._getDateTimeObj(now);
+
+			if (timeToCheckObj.year < nowObj.year) {
+				isPassed = true;
+			} else if (timeToCheckObj.year === nowObj.year) {
+				if (timeToCheckObj.month < nowObj.month) {
+					isPassed = true;
+				} else if (timeToCheckObj.month === nowObj.month) {
+					if (timeToCheckObj.date < nowObj.date) {
+						isPassed = true;
+					} else if (timeToCheckObj.date === nowObj.date) {
+						if (timeToCheckObj.hours < nowObj.hours) {
+							isPassed = true;
+						} else if (timeToCheckObj.hours === nowObj.hours) {
+							if (timeToCheckObj.minutes <= nowObj.minutes) {
+								// Mark it as passed if in the same minute
+								isPassed = true;
+							}
+						}
+					}
+				}
+			}
+
+			return isPassed;
+		},
+
+		_getDateTimeObj: function (dateTime) {
+			let dateTimeObj = {
+				year: dateTime.getFullYear(),
+				month: dateTime.getMonth(),
+				date: dateTime.getDate(),
+
+				hours: dateTime.getHours(),
+				minutes: dateTime.getMinutes(),
+			};
+
+			return dateTimeObj;
+		},
+
+		_checkShouldPost: function () {
+			console.log('Checking if I should post');
+
+			let now = new Date();
+
+			console.log('The current time is:', app.listen._getDateTimeObj(now));
+
+			if (app.listen._isTimePassed(nextPostTime)) {
+				console.log('Posting');
+				nextPostTime = app.listen._getNextPostTime();
+				app.tweet.post();
+			} else {
+				console.log('It\'s not time to post yet');
 			}
 		},
 
