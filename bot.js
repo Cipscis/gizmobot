@@ -32,6 +32,11 @@ const postIntervalLength = 1000 * 60 * (parseFloat(process.env.POST_INTERVAL_LEN
 let postInterval;
 let nextPostTime;
 
+// Remember recent posts and replies to avoid repeats
+const memoryDuration = parseInt(process.env.MEMORY_DURATION, 10) || 1;
+let postMemory = [];
+let replyMemory = [];
+
 const app = {
 	start: function () {
 		console.log('Starting bot...');
@@ -287,35 +292,55 @@ const app = {
 
 	tweet: {
 		reply: function (tweet, reply) {
-			reply = reply || app.tweet._generate(app.library.replies);
+			reply = reply || app.tweet._generate(app.library.replies, replyMemory);
+			app.tweet._remember(reply, replyMemory);
 
 			app.tweet._uploadMedia(reply, tweet);
 		},
 
 		post: function (post) {
-			post = post || app.tweet._generate(app.library.posts);
+			post = post || app.tweet._generate(app.library.posts, postMemory);
+			app.tweet._remember(post, postMemory);
 
 			app.tweet._uploadMedia(post);
 		},
 
-		_generate: function (library) {
+		_generate: function (library, memory) {
 			library = library || app.library.replies;
+			memory = memory || replyMemory;
 
 			let libraryTotal = library.reduce((sum, reply, i) => sum + reply.chance, 0);
 			let seed = Math.random() * libraryTotal;
-			let reply;
+			let message;
 
 			let progress = 0;
 			for (let i = 0; i < library.length; i++) {
-				reply = library[i];
+				message = library[i];
 
-				progress += reply.chance;
+				progress += message.chance;
 				if (progress > seed) {
 					break;
 				}
 			}
 
-			return reply;
+			// If this message was used recently, regenerate it
+			if (memory.indexOf(message) !== -1) {
+				message = app.tweet._generate(library, memory);
+			}
+
+			return message;
+		},
+
+		_remember: function (message, memory) {
+			memory = memory || replyMemory;
+
+			memory.push(message);
+
+			let length = memory.length;
+			while (length > memoryDuration) {
+				// Remove the first element
+				memory.splice(0, 1);
+			}
 		},
 
 		_uploadMedia: function (tweet, replyingToTweet) {
