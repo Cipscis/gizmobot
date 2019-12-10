@@ -243,16 +243,17 @@ const app = {
 		},
 
 		_checkShouldPost: function () {
-			console.log('Checking if I should post...');
+			// console.log('Checking if I should post...');
 
 			let now = new Date();
+			let shouldPost = app.listen._isTimePassed(nextPostTime);
 
-			if (app.listen._isTimePassed(nextPostTime)) {
+			if (shouldPost) {
 				console.log('Posting');
 				nextPostTime = app.listen._getNextPostTime();
 				app.tweet.post();
 			} else {
-				console.log('It\'s not time to post yet');
+				// console.log('It\'s not time to post yet');
 			}
 		},
 
@@ -293,14 +294,14 @@ const app = {
 	tweet: {
 		reply: function (tweet, reply) {
 			reply = reply || app.tweet._generate(app.library.replies, replyMemory);
-			app.tweet._remember(reply, replyMemory);
+			app.tweet._remember(reply, replyMemory, app.library.replies);
 
 			app.tweet._uploadMedia(reply, tweet);
 		},
 
 		post: function (post) {
 			post = post || app.tweet._generate(app.library.posts, postMemory);
-			app.tweet._remember(post, postMemory);
+			app.tweet._remember(post, postMemory, app.library.posts);
 
 			app.tweet._uploadMedia(post);
 		},
@@ -324,20 +325,26 @@ const app = {
 			}
 
 			// If this message was used recently, regenerate it
-			if (memory.indexOf(message) !== -1) {
+			let index = library.indexOf(message);
+			if (memory.indexOf(index) !== -1) {
+				// console.log(`Rejecting ${index}`);
 				message = app.tweet._generate(library, memory);
 			}
 
 			return message;
 		},
 
-		_remember: function (message, memory) {
+		_remember: function (message, memory, library) {
 			memory = memory || replyMemory;
 
-			memory.push(message);
+			let index = library.indexOf(message);
+			if (index === -1) {
+				console.error('Could not find message in library');
+			} else {
+				memory.push(index);
+			}
 
-			let length = memory.length;
-			while (length > memoryDuration) {
+			while (memory.length > memoryDuration) {
 				// Remove the first element
 				memory.splice(0, 1);
 			}
