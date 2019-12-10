@@ -301,6 +301,93 @@
 		"image_74": {
 			"file": "20190922_174349.jpg",
 			"alt": "Gizmo the cat loafing on the armrest of a sofa, with his paw resting over his front paws."
+		},
+
+
+
+		"image_75": {
+			"file": "20191031_073136.jpg",
+			"alt": "Gizmo the cat sitting on top of a cat tower next to a window, caught mid blink and as he licks his nose."
+		},
+		"image_76": {
+			"file": "20191102_143427(0).jpg",
+			"alt": "Gizmo the cat looking back past the camera while standing in front of a wire mesh keeping him from leaving the house, with a tiled area and a lawn behind it."
+		},
+		"image_77": {
+			"file": "20191102_164231.jpg",
+			"alt": "Gizmo the cat lying on his side in a patch of sunlight on the floor, stretching his front paws out."
+		},
+		"image_78": {
+			"file": "20191103_133831.jpg",
+			"alt": "Gizmo the cat loafing in the sunlight in front of a wire mesh keeping him from leaving the house, intently watching the outdoors."
+		},
+		"image_79": {
+			"file": "20191104_072616.jpg",
+			"alt": "Gizmo the cat standing up to eating a treat out from between Mark's thumb and forefinger, using one of his front paws to gently hold Mark's hand in place."
+		},
+		"image_80": {
+			"file": "20191108_175249_013.jpg",
+			"alt": "Gizmo the cat sitting in the sunlight in front of a wire mesh keeping him from leaving the house, intently watching the outdoors as he sniffs the air."
+		},
+		"image_81": {
+			"file": "20191111_095633.jpg",
+			"alt": "Gizmo the cat asleep in a hammock on top of a cat tower, next to a window."
+		},
+		"image_82": {
+			"file": "20191114_221009.jpg",
+			"alt": "Gizmo the cat curled up on a blanket on a bed, getting some belly rubs."
+		},
+		"image_83": {
+			"file": "20191117_190558.jpg",
+			"alt": "Gizmo the cat curled up in the gap between Mark's knees as he lies on the couch."
+		},
+		"image_84": {
+			"file": "20191120_072313(0).jpg",
+			"alt": "Gizmo the cat mid-lick, standing up on his hind legs to eat a treat out from between Mark's thumb and forefinger, using one of his front paws to gently hold Mark's hand in place."
+		},
+		"image_85": {
+			"file": "20191121_072715",
+			"alt": "Gizmo the cat sitting on top of a cat tower, looking up at the camera with his head tilted to the right."
+		},
+		"image_86": {
+			"file": "20191122_072016.jpg",
+			"alt": "Gizmo the cat loafing on a pile of scarves in a dimly lit room, looking up at the camera with big eyes."
+		},
+		"image_87": {
+			"file": "20191123_122847.jpg",
+			"alt": "Close up of Gizmo the cat looking at the camera while curled up on a blanket, with his tail covering his nose and mouth."
+		},
+		"image_88": {
+			"file": "20191123_185433.jpg",
+			"alt": "Gizmo the cat lying next to Mark's leg on the couch with his paws stretch out beneath his chin while he looks past the camera to keep an eye on the outdoors."
+		},
+		"image_89": {
+			"file": "20191124_132304.jpg",
+			"alt": "Gizmo the cat looking sleepily up at the camera while resting on a chair covered in a fluffy blanket and leaning against the fluffy inner of a hoodie draped over the back of the chair."
+		},
+		"image_90": {
+			"file": "20191125_224942.jpg",
+			"alt": "Gizmo the cat loafing inside a large plastic shopping bag, looking at the camera with enormous eyes."
+		},
+		"image_91": {
+			"file": "20191129_103254.jpg",
+			"alt": "Close up of Gizmo the cat caught mid-lick while licking his nose."
+		},
+		"image_92": {
+			"file": "20191129_114448.jpg",
+			"alt": "Top down close up of Gizmo the cat's face as he's curled up asleep on a pile of colourful socks, with a paw covering his face."
+		},
+		"image_93": {
+			"file": "20191129_133332.jpg",
+			"alt": "Gizmo the cat sitting on his blue knitted mat next to a window, licking one of his front paws."
+		},
+		"image_94": {
+			"file": "20191208_112245.jpg",
+			"alt": "Close up of Gizmo the cat's face smushed against the side of the blue laundry basket he's lying in."
+		},
+		"image_95": {
+			"file": "20191208_171935.jpg",
+			"alt": "Gizmo the cat's paw resting on top of Mark's hand on the couch."
 		}
 	},
 
@@ -723,7 +810,7 @@
 		{
 			"image": "image_22",
 			"text": "Does this look dramatic enough?",
-			"chance": 6
+			"chance": 10
 		},
 		{
 			"image": "image_25",
@@ -753,7 +840,7 @@
 		{
 			"image": "image_49",
 			"text": "💖",
-			"chance": 20
+			"chance": 8
 		},
 		{
 			"image": "image_55",
@@ -763,7 +850,7 @@
 		{
 			"image": "image_61",
 			"text": "☁🌈 Welcome to my cloud fortress ☀☁",
-			"chance": 25
+			"chance": 10
 		},
 		{
 			"image": "image_62",
@@ -788,6 +875,113 @@
 		{
 			"image": "image_73",
 			"text": "You could rub my belly, you know. If you want... 💙",
+			"chance": 10
+		},
+
+
+		{
+			"image": "image_75",
+			"text": "Mmmm that was a good treat!",
+			"chance": 10
+		},
+		{
+			"image": "image_76",
+			"text": "One of my favourite little views.",
+			"chance": 10
+		},
+		{
+			"image": "image_77",
+			"text": "Sunbeam stretch ☀",
+			"chance": 10
+		},
+		{
+			"image": "image_78",
+			"text": "I love watching the outdoors. There's lizards and birds and bugs out there.",
+			"chance": 14
+		},
+		{
+			"image": "image_79",
+			"text": "Yum yum my morning treat",
+			"chance": 10
+		},
+		{
+			"image": "image_80",
+			"text": "There's something on the wind today...",
+			"chance": 10
+		},
+		{
+			"image": "image_81",
+			"text": "Hammock snooze time 💤",
+			"chance": 10
+		},
+		{
+			"image": "image_82",
+			"text": "Finally, some belly rubs",
+			"chance": 10
+		},
+		{
+			"image": "image_83",
+			"text": "Maybe if I turn my head upside down I could curl even tighter",
+			"chance": 10
+		},
+		{
+			"image": "image_84",
+			"text": "Morning treat yes please!",
+			"chance": 10
+		},
+		{
+			"image": "image_85",
+			"text": "Is it time for my treat?",
+			"chance": 17
+		},
+		{
+			"image": "image_86",
+			"text": "Comfy scarves 🧣",
+			"chance": 10
+		},
+		{
+			"image": "image_87",
+			"text": "Don't you wish you had a tail this comfy?",
+			"chance": 10
+		},
+		{
+			"image": "image_88",
+			"text": "Dreaming of something big",
+			"chance": 10
+		},
+		{
+			"image": "image_89",
+			"text": "My two favourite textures, right next to my favourite view. I could grow old in this chair",
+			"chance": 10
+		},
+		{
+			"image": "image_90",
+			"text": "I have the biggest eyes, no competition",
+			"chance": 13
+		},
+		{
+			"image": "image_91",
+			"text": "Always a good time for a mlem",
+			"chance": 10
+		},
+		{
+			"image": "image_92",
+			"text": "These socks... they are mine",
+			"chance": 10
+		},
+		{
+			"image": "image_93",
+			"text": "Bath time",
+			"chance": 10
+		},
+		{
+			"image": "image_94",
+			"text": "Of course this is comfortable, why do you ask?",
+			"chance": 10
+		},
+		{
+			"image": "image_95",
+			"text": "Are you doing okay today? Take some time for yourself if you need it 💕",
 			"chance": 10
 		}
 	]
