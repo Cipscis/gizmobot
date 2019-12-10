@@ -1,4 +1,5 @@
 const dotenv = require('dotenv');
+const https = require('https');
 const express = require('express');
 const fs = require('fs');
 const http = require('http');
@@ -43,6 +44,7 @@ const app = {
 
 		app.init.initTwit();
 		app.init.readLibrary();
+		app.init.restoreMemory();
 
 		if (process.env.ENVIRONMENT === 'heroku') {
 			// Ping the Heroku app every 5 minutes
@@ -64,6 +66,11 @@ const app = {
 		readLibrary: function () {
 			// library.json contains information about all the possible tweets
 			fs.readFile('library.json', 'utf-8', app.init._onLibraryRead);
+		},
+
+		restoreMemory: function () {
+			app.memory._restoreReplyMemory();
+			app.memory._restorePostMemory();
 		},
 
 		_onLibraryRead: function (err, data) {
@@ -294,14 +301,14 @@ const app = {
 	tweet: {
 		reply: function (tweet, reply) {
 			reply = reply || app.tweet._generate(app.library.replies, replyMemory);
-			app.tweet._remember(reply, replyMemory, app.library.replies);
+			app.memory.remember(reply, replyMemory, app.library.replies, process.env.MEMORY_REPLIES_ID);
 
 			app.tweet._uploadMedia(reply, tweet);
 		},
 
 		post: function (post) {
 			post = post || app.tweet._generate(app.library.posts, postMemory);
-			app.tweet._remember(post, postMemory, app.library.posts);
+			app.memory.remember(post, postMemory, app.library.posts, process.env.MEMORY_POSTS_ID);
 
 			app.tweet._uploadMedia(post);
 		},
@@ -332,22 +339,6 @@ const app = {
 			}
 
 			return message;
-		},
-
-		_remember: function (message, memory, library) {
-			memory = memory || replyMemory;
-
-			let index = library.indexOf(message);
-			if (index === -1) {
-				console.error('Could not find message in library');
-			} else {
-				memory.push(index);
-			}
-
-			while (memory.length > memoryDuration) {
-				// Remove the first element
-				memory.splice(0, 1);
-			}
 		},
 
 		_uploadMedia: function (tweet, replyingToTweet) {
@@ -419,6 +410,134 @@ const app = {
 					console.error(err);
 				}
 			};
+		}
+	},
+
+	memory: {
+		remember: function (message, memory, library, remoteMemoryId) {
+			memory = memory || replyMemory;
+
+			let index = library.indexOf(message);
+			if (index === -1) {
+				console.error('Could not find message in library');
+			} else {
+				memory.push(index);
+			}
+
+			while (memory.length > memoryDuration) {
+				// Remove the first element
+				memory.splice(0, 1);
+			}
+
+			app.memory._rememberRemote(memory, remoteMemoryId);
+		},
+
+		_rememberRemote: function (memory, remoteMemoryId) {
+			const postData = JSON.stringify(memory);
+
+			const options = {
+				hostname: 'api.myjson.com',
+				port: 443,
+				path: `/bins/${remoteMemoryId}`,
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+					'Content-Length': postData.length
+				}
+			};
+
+			console.log('Remembering:', memory);
+
+			if (remoteMemoryId) {
+				const req = https.request(options);
+
+				req.on('error', e => {
+					console.log('There was a problem remembering a tweet:', e);
+				});
+
+				req.write(postData);
+				req.end();
+			}
+		},
+
+		_restoreReplyMemory: function () {
+			const memoryId = process.env.MEMORY_REPLIES_ID;
+
+			const options = {
+				hostname: 'api.myjson.com',
+				port: 443,
+				path: `/bins/${memoryId}`,
+				method: 'GET'
+			};
+
+			if (memoryId) {
+				console.log('Attempting to restore the reply memory data');
+
+				const req = https.request(options, res => {
+					let body = '';
+
+					res.on('data', chunk => {
+						body += chunk;
+					});
+
+					res.on('end', () => {
+						try {
+							let data = JSON.parse(body);
+
+							replyMemory = data;
+							console.log('Successfully restored the reply memory data:', data);
+						} catch (e) {
+							console.error('There was a problem reading the reply memory data:', data);
+						}
+					});
+				});
+
+				req.on('error', e => {
+					console.log('There was a problem restoring the reply memory data:', e);
+				});
+
+				req.end();
+			}
+		},
+
+		_restorePostMemory: function () {
+			const memoryId = process.env.MEMORY_POSTS_ID;
+
+			const options = {
+				hostname: 'api.myjson.com',
+				port: 443,
+				path: `/bins/${memoryId}`,
+				method: 'GET'
+			};
+
+			if (memoryId) {
+				console.log('Attempting to restore the post memory data');
+
+				const req = https.request(options, res => {
+					let body = '';
+
+					res.on('data', chunk => {
+						body += chunk;
+					});
+
+					res.on('end', () => {
+						try {
+							let data = JSON.parse(body);
+
+							postMemory = data;
+							console.log('Successfully restored the post memory data:', data);
+						} catch (e) {
+							console.error('There was a problem reading the post memory data:', data);
+						}
+					});
+				});
+
+				req.on('error', e => {
+					console.log('There was a problem restoring the post memory data:', e);
+				});
+
+				req.end();
+			}
 		}
 	}
 };
