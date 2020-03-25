@@ -37,13 +37,9 @@ The content of the messages that the bot can tweet are configured in a file call
 
 These four environment variables are necessary to use the Twitter API. You can generate them when you create an app in Twitter's Developers site: https://developer.twitter.com/en/apps
 
-`ENVIRONMENT` *optional*
-
-If set to `"heroku"`, and the `HEROKU_APP` environment variable is also set, the Twitter bot will ping the Heroku app with the given name every 5 minutes to prevent it from going to sleep.
-
 `HEROKU_APP` *optional*
 
-The name of the Heroku app, if the bot is running in that environment. See `ENVIRONMENT`.
+The name of the Heroku app, if the bot is running in that environment. If it is set, the Twitter bot will ping the Heroku app with the given name every 5 minutes to prevent it from going to sleep.
 
 `HANDLE` *required*
 The handle of the Twitter account that the bot will be tweeting from. Do not include the @ symbol. For example, `"GizmoSaysHello"`
