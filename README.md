@@ -42,6 +42,7 @@ These four environment variables are necessary to use the Twitter API. You can g
 The name of the Heroku app, if the bot is running in that environment. If it is set, the Twitter bot will ping the Heroku app with the given name every 5 minutes to prevent it from going to sleep.
 
 `HANDLE` *required*
+
 The handle of the Twitter account that the bot will be tweeting from. Do not include the @ symbol. For example, `"GizmoSaysHello"`
 
 `POST_INTERVAL_LENGTH` *optional* Default: 7
