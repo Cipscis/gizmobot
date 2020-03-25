@@ -17,9 +17,9 @@ If you set up a gizmobot app to run on Heroku, remember to set the `HEROKU_APP` 
 
 ## Configuration
 
-Most configuration variables are set as environment variables. When running the project locally, these are contained in a file called `.env`
+Most configuration variables are set as environment variables. When running the project locally, these are contained in a file called `.env`. These variables can be different for each environment, so you can use a different Twitter account for testing when running the bot on your computer.
 
-Some other, more complex configuration variables are configured in the code. These are configured in a file called `.env`
+Some other, more complex configuration variables are configured in the code. These are configured in a file called `config.json`. These will be the same across each environment.
 
 The content of the messages that the bot can tweet are configured in a file called `library.json`
 
