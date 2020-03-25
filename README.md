@@ -15,7 +15,7 @@ However, you may not want to run the bot this way once it is ready to go live, b
 
 If you set up a gizmobot app to run on Heroku, remember to set the `HEROKU_APP` environment variable so the bot will ping itself regularly to keep itself awake, otherwise Heroku may turn it off if it's inactive for too long.
 
-Also note, if you run the app on Heroku, you will need to set up a `TZ` environment variable so the bot uses the correct timezone. See this Wikipedia page for a list of "TZ database names" you can use for this setting.
+Also note, if you run the app on Heroku, you will need to set up a `TZ` environment variable so the bot uses the correct timezone. See this Wikipedia page for a list of "TZ database names" you can use for this setting: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 ## Configuration
 
