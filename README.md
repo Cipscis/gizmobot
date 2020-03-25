@@ -15,6 +15,8 @@ However, you may not want to run the bot this way once it is ready to go live, b
 
 If you set up a gizmobot app to run on Heroku, remember to set the `HEROKU_APP` environment variable so the bot will ping itself regularly to keep itself awake, otherwise Heroku may turn it off if it's inactive for too long.
 
+Also note, if you run the app on Heroku, you will need to set up a `TZ` environment variable so the bot uses the correct timezone. See this Wikipedia page for a list of "TZ database names" you can use for this setting.
+
 ## Configuration
 
 Most configuration variables are set as environment variables. When running the project locally, these are contained in a file called `.env`. These variables can be different for each environment, so you can use a different Twitter account for testing when running the bot on your computer.
