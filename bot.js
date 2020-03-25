@@ -1,3 +1,5 @@
+'use strict';
+
 const dotenv = require('dotenv');
 const https = require('https');
 const express = require('express');
@@ -11,22 +13,35 @@ const server = express();
 server.set('port', process.env.PORT || 5000);
 
 
-const handle = process.env.HANDLE || 'GizmoSaysHello';
-const emoji = ['😻', '🐈', '😹', '😸', '🐱', '😼', '😺', '😿', '😾', '😽', '🙀', '🦁', '🐯', '🐅'];
+// Check all necessary environment variables are set
+let checkEnvironmentVariables = function () {
+	if (!process.env.HANDLE) {
+		throw new Error('No "HANDLE" environment variable has been set. This is required so the bot knows where to listen for mentions.');
+	}
+
+	if (!process.env.CONSUMER_KEY) {
+		throw new Error('No "CONSUMER_KEY" environment variable has been set. This is required so the bot can use the Twitter API.');
+	}
+
+	if (!process.env.CONSUMER_SECRET) {
+		throw new Error('No "CONSUMER_SECRET" environment variable has been set. This is required so the bot can use the Twitter API.');
+	}
+
+	if (!process.env.ACCESS_TOKEN) {
+		throw new Error('No "ACCESS_TOKEN" environment variable has been set. This is required so the bot can use the Twitter API.');
+	}
+
+	if (!process.env.ACCESS_TOKEN_SECRET) {
+		throw new Error('No "ACCESS_TOKEN_SECRET" environment variable has been set. This is required so the bot can use the Twitter API.');
+	}
+};
+checkEnvironmentVariables();
+
+const { signals, postTimes } = require('./config.js');
+
+const handle = process.env.HANDLE;
 const maxFileSize = 5242880;
 
-
-// Times to post
-const postTimes = [
-	{
-		hours: 9,
-		minutes: 30
-	},
-	{
-		hours: 16,
-		minutes: 30
-	}
-];
 
 // Poll every 7 minutes by defuault to add a little noise to when the posts are sent
 const postIntervalLength = 1000 * 60 * (parseFloat(process.env.POST_INTERVAL_LENGTH) || 7);
@@ -46,7 +61,7 @@ const app = {
 		app.init.readLibrary();
 		app.init.restoreMemory();
 
-		if (process.env.ENVIRONMENT === 'heroku') {
+		if (process.env.HEROKU_APP) {
 			// Ping the Heroku app every 5 minutes
 			setInterval(app.listen.keepAwake, 1000*60*5);
 		}
@@ -277,8 +292,8 @@ const app = {
 			console.log(tweetText);
 
 			let match = false;
-			for (let i = 0; i < emoji.length; i++) {
-				if (tweetText.indexOf(emoji[i]) !== -1) {
+			for (let i = 0; i < signals.length; i++) {
+				if (tweetText.indexOf(signals[i]) !== -1) {
 					match = true;
 					break;
 				}
@@ -293,22 +308,28 @@ const app = {
 		},
 
 		keepAwake: function () {
-			console.log('Keeping awake');
-			http.get('http://gizmo-bot.herokuapp.com/');
+			// console.log('Keeping awake');
+			http.get(`http://${process.env.HEROKU_APP}.herokuapp.com/`);
 		}
 	},
 
 	tweet: {
 		reply: function (tweet, reply) {
 			reply = reply || app.tweet._generate(app.library.replies, replyMemory);
-			app.memory.remember(reply, replyMemory, app.library.replies, process.env.MEMORY_REPLIES_ID);
+
+			if (process.env.MEMORY_REPLIES_ID) {
+				app.memory.remember(reply, replyMemory, app.library.replies, process.env.MEMORY_REPLIES_ID);
+			}
 
 			app.tweet._uploadMedia(reply, tweet);
 		},
 
 		post: function (post) {
 			post = post || app.tweet._generate(app.library.posts, postMemory);
-			app.memory.remember(post, postMemory, app.library.posts, process.env.MEMORY_POSTS_ID);
+
+			if (process.env.MEMORY_POSTS_ID) {
+				app.memory.remember(post, postMemory, app.library.posts, process.env.MEMORY_POSTS_ID);
+			}
 
 			app.tweet._uploadMedia(post);
 		},
@@ -317,7 +338,7 @@ const app = {
 			library = library || app.library.replies;
 			memory = memory || replyMemory;
 
-			let libraryTotal = library.reduce((sum, reply, i) => sum + reply.chance, 0);
+			let libraryTotal = library.reduce((sum, message, i) => sum + (message.chance || 10), 0);
 			let seed = Math.random() * libraryTotal;
 			let message;
 
@@ -333,9 +354,12 @@ const app = {
 
 			// If this message was used recently, regenerate it
 			let index = library.indexOf(message);
-			if (memory.indexOf(index) !== -1) {
-				// console.log(`Rejecting ${index}`);
-				message = app.tweet._generate(library, memory);
+			if (memory.length < library.length) {
+				// Ignore memory restriction if the memory limit is larger than the library
+				if (memory.indexOf(index) !== -1) {
+					// console.log(`Rejecting ${index}`);
+					message = app.tweet._generate(library, memory);
+				}
 			}
 
 			return message;
@@ -463,15 +487,15 @@ const app = {
 		_restoreReplyMemory: function () {
 			const memoryId = process.env.MEMORY_REPLIES_ID;
 
-			const options = {
-				hostname: 'api.myjson.com',
-				port: 443,
-				path: `/bins/${memoryId}`,
-				method: 'GET'
-			};
-
 			if (memoryId) {
 				console.log('Attempting to restore the reply memory data');
+
+				const options = {
+					hostname: 'api.myjson.com',
+					port: 443,
+					path: `/bins/${memoryId}`,
+					method: 'GET'
+				};
 
 				const req = https.request(options, res => {
 					let body = '';
@@ -503,15 +527,15 @@ const app = {
 		_restorePostMemory: function () {
 			const memoryId = process.env.MEMORY_POSTS_ID;
 
-			const options = {
-				hostname: 'api.myjson.com',
-				port: 443,
-				path: `/bins/${memoryId}`,
-				method: 'GET'
-			};
-
 			if (memoryId) {
 				console.log('Attempting to restore the post memory data');
+
+				const options = {
+					hostname: 'api.myjson.com',
+					port: 443,
+					path: `/bins/${memoryId}`,
+					method: 'GET'
+				};
 
 				const req = https.request(options, res => {
 					let body = '';
