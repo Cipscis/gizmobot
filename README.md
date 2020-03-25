@@ -54,6 +54,14 @@ The number of minutes the bot should wait between checking if it's time to post 
 
 The number of posts and replies to remember, in order to avoid repetition. Relies on the `MEMORY_POSTS_ID` and `MEMORY_REPLIES_ID` environment variables to function. If the memory duration is larger than the size of the library, it will be ignored.
 
+`MEMORY_POSTS_ID` *optional*
+
+Gizmobot uses https://myjson.com/ to store its memory so that it can be restored after the app is restarted. This environment variable is the ID of the storage bin on the myjson website used to record its memory of posts. To create a bin, add some arbitrary JSON (`{}` is fine, it will be overridden anyway) and then copy the bit of the URL after `https://myjson.com/`
+
+`MEMORY_REPLIES_ID` *optional*
+
+This environment variable is the same as `MEMORY_POSTS_ID`, except it is for the memory of replies sent by the bot.
+
 ### Complex configuration variables
 
 `signals`
