@@ -15,11 +15,13 @@ However, you may not want to run the bot this way once it is ready to go live, b
 
 If you set up a gizmobot app to run on Heroku, remember to set the `HEROKU_APP` environment variable so the bot will ping itself regularly to keep itself awake, otherwise Heroku may turn it off if it's inactive for too long.
 
+Also note, if you run the app on Heroku, you will need to set up a `TZ` environment variable so the bot uses the correct timezone. See this Wikipedia page for a list of "TZ database names" you can use for this setting: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
 ## Configuration
 
-Most configuration variables are set as environment variables. When running the project locally, these are contained in a file called `.env`
+Most configuration variables are set as environment variables. When running the project locally, these are contained in a file called `.env`. These variables can be different for each environment, so you can use a different Twitter account for testing when running the bot on your computer.
 
-Some other, more complex configuration variables are configured in the code. These are configured in a file called `.env`
+Some other, more complex configuration variables are configured in the code. These are configured in a file called `config.json`. These will be the same across each environment.
 
 The content of the messages that the bot can tweet are configured in a file called `library.json`
 
@@ -35,15 +37,12 @@ The content of the messages that the bot can tweet are configured in a file call
 
 These four environment variables are necessary to use the Twitter API. You can generate them when you create an app in Twitter's Developers site: https://developer.twitter.com/en/apps
 
-`ENVIRONMENT` *optional*
-
-If set to `"heroku"`, and the `HEROKU_APP` environment variable is also set, the Twitter bot will ping the Heroku app with the given name every 5 minutes to prevent it from going to sleep.
-
 `HEROKU_APP` *optional*
 
-The name of the Heroku app, if the bot is running in that environment. See `ENVIRONMENT`.
+The name of the Heroku app, if the bot is running in that environment. If it is set, the Twitter bot will ping the Heroku app with the given name every 5 minutes to prevent it from going to sleep.
 
 `HANDLE` *required*
+
 The handle of the Twitter account that the bot will be tweeting from. Do not include the @ symbol. For example, `"GizmoSaysHello"`
 
 `POST_INTERVAL_LENGTH` *optional* Default: 7
@@ -53,6 +52,14 @@ The number of minutes the bot should wait between checking if it's time to post 
 `MEMORY_DURATION` *optional* Default: 1
 
 The number of posts and replies to remember, in order to avoid repetition. Relies on the `MEMORY_POSTS_ID` and `MEMORY_REPLIES_ID` environment variables to function. If the memory duration is larger than the size of the library, it will be ignored.
+
+`MEMORY_POSTS_ID` *optional*
+
+Gizmobot uses https://myjson.com/ to store its memory so that it can be restored after the app is restarted. This environment variable is the ID of the storage bin on the myjson website used to record its memory of posts. To create a bin, add some arbitrary JSON (`{}` is fine, it will be overridden anyway) and then copy the bit of the URL after `https://myjson.com/`
+
+`MEMORY_REPLIES_ID` *optional*
+
+This environment variable is the same as `MEMORY_POSTS_ID`, except it is for the memory of replies sent by the bot.
 
 ### Complex configuration variables
 

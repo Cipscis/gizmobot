@@ -281,10 +281,14 @@ const app = {
 
 		_read: function (tweet) {
 			let tweetText = (tweet.extended_tweet && tweet.extended_tweet.full_text) || tweet.text;
+			let retweetPrefix = `RT @${handle}: `;
 			console.log('');
 
 			if (tweet.user.screen_name.toLowerCase() === handle.toLowerCase()) {
 				console.log(`I heard you, @${tweet.user.screen_name}, but that's me so I'm going to ignore it.`);
+				return;
+			} else if (tweetText.toLowerCase().indexOf((retweetPrefix).toLowerCase()) === 0) {
+				console.log(`I heard you, @${tweet.user.screen_name}, but it looks like you were retweeting me so I'm going to ignore it.`);
 				return;
 			}
 
