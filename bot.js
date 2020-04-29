@@ -43,7 +43,7 @@ const handle = process.env.HANDLE;
 const maxFileSize = 5242880;
 
 
-// Poll every 7 minutes by defuault to add a little noise to when the posts are sent
+// Poll every 7 minutes by default to add a little noise to when the posts are sent
 const postIntervalLength = 1000 * 60 * (parseFloat(process.env.POST_INTERVAL_LENGTH) || 7);
 let postInterval;
 let nextPostTime;
