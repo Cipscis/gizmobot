@@ -152,7 +152,9 @@ const app = {
 			                 typeof image.file === 'string' &&
 			                 typeof image.alt === 'string';
 
-			let valid = validTypes && validImage;
+			let validChance = typeof entry.chance === 'number';
+
+			let valid = validTypes && validImage && validChance;
 
 			if (valid !== true) {
 				console.error(`Invalid entry: ${JSON.stringify(entry, null, '\t')}`);
