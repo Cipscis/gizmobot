@@ -425,6 +425,9 @@ const app = {
 								console.error(`I was trying to reply to ${replyingToTweet.user.screen_name}`);
 							}
 							console.error(err);
+
+							console.error('I was trying to send this tweet:');
+							console.error(tweet);
 						} else {
 							if (typeof replyingToTweet !== 'undefined') {
 								console.log(`I replied successfully to @${replyingToTweet.user.screen_name}:`);
