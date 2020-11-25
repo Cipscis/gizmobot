@@ -1763,6 +1763,49 @@
 			"text": "You're allowed to take a break 💕",
 			"chance": 10
 		}
+
+
+
+		{
+			"image": "image_172",
+			"text": "Will you play with me?",
+			"chance": 10
+		},
+		{
+			"image": "image_173",
+			"text": "My sister Rocket used to love this spot. That was years ago, but it still feels warm 💔",
+			"chance": 5
+		},
+		{
+			"image": "image_174",
+			"text": "This is my morning perch ☀",
+			"chance": 10
+		},
+		{
+			"image": "image_175",
+			"text": "Hi, you found me!",
+			"chance": 10
+		},
+		{
+			"image": "image_176",
+			"text": "Do you like my 😻 impression?",
+			"chance": 11
+		},
+		{
+			"image": "image_177",
+			"text": "I'm waiting to ambush a toy, don't give my position away",
+			"chance": 10
+		},
+		{
+			"image": "image_181",
+			"text": "Khajiit has wares if you have coin",
+			"chance": 10
+		},
+		{
+			"image": "image_183",
+			"text": "I cast a spell on you ✨",
+			"chance": 10
+		}
 	],
 
 	"posts": [
@@ -2347,6 +2390,79 @@
 		{
 			"image": "image_170",
 			"text": "You're allowed to take a break 💕",
+			"chance": 10
+		},
+
+
+
+		{
+			"image": "image_171",
+			"text": "Do not disturb 💤",
+			"chance": 10
+		},
+		{
+			"image": "image_172",
+			"text": "It's playtime!",
+			"chance": 10
+		},
+		{
+			"image": "image_173",
+			"text": "My sister Rocket used to love this spot. That was years ago, but it still feels warm 💔",
+			"chance": 5
+		},
+		{
+			"image": "image_174",
+			"text": "This is my morning perch ☀",
+			"chance": 10
+		},
+		{
+			"image": "image_175",
+			"text": "Hi!",
+			"chance": 10
+		},
+		{
+			"image": "image_176",
+			"text": "Do you like my 😻 impression?",
+			"chance": 11
+		},
+		{
+			"image": "image_177",
+			"text": "I'm waiting to ambush a toy, don't give my position away",
+			"chance": 10
+		},
+		{
+			"image": "image_178",
+			"text": "Not going to let my nose escape, even while I'm asleep",
+			"chance": 10
+		},
+		{
+			"image": "image_179",
+			"text": "💙💤☁",
+			"chance": 10
+		},
+		{
+			"image": "image_180",
+			"text": "This is a great snug spot to sleep 💙",
+			"chance": 10
+		},
+		{
+			"image": "image_181",
+			"text": "Khajiit has wares if you have coin",
+			"chance": 10
+		},
+		{
+			"image": "image_182",
+			"text": "Feels like it's almost nap time",
+			"chance": 10
+		},
+		{
+			"image": "image_183",
+			"text": "I cast a spell on you ✨",
+			"chance": 13
+		},
+		{
+			"image": "image_184",
+			"text": "Screw it. I'm going back to sleep",
 			"chance": 10
 		}
 	]
