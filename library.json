@@ -1762,7 +1762,7 @@
 			"image": "image_170",
 			"text": "You're allowed to take a break 💕",
 			"chance": 10
-		}
+		},
 
 
 
@@ -1799,11 +1799,181 @@
 		{
 			"image": "image_181",
 			"text": "Khajiit has wares if you have coin",
-			"chance": 10
+			"chance": 20
 		},
 		{
 			"image": "image_183",
 			"text": "I cast a spell on you ✨",
+			"chance": 20
+		},
+		{
+			"image": "image_186",
+			"text": "Don't block my sunlight 🚫",
+			"chance": 10
+		},
+		{
+			"image": "image_187",
+			"text": "Wanna play? 🐾",
+			"chance": 10
+		},
+		{
+			"image": "image_188",
+			"text": "🥺",
+			"chance": 10
+		},
+		{
+			"image": "image_189",
+			"text": "I want to stay here forever 💙",
+			"chance": 10
+		},
+		{
+			"image": "image_191",
+			"text": "I think my little cousin looks like me. Do you see the resemblance?",
+			"chance": 10
+		},
+		{
+			"image": "image_194",
+			"text": "Okay, you can join me. Just don't block the sunlight",
+			"chance": 10
+		},
+		{
+			"image": "image_195",
+			"text": "You may laugh, but at least my nose won't escape while I'm asleep",
+			"chance": 10
+		},
+		{
+			"image": "image_198",
+			"text": "Ambush!",
+			"chance": 10
+		},
+		{
+			"image": "image_199",
+			"text": "☀💤",
+			"chance": 10
+		},
+		{
+			"image": "image_203",
+			"text": "Oh hi, you found me!",
+			"chance": 10
+		},
+		{
+			"image": "image_204",
+			"text": "Hello 💕",
+			"chance": 10
+		},
+		{
+			"image": "image_205",
+			"text": "Sleeping on a cloud ☁",
+			"chance": 10
+		},
+		{
+			"image": "image_207",
+			"text": "mlem",
+			"chance": 10
+		},
+		{
+			"image": "image_208",
+			"text": "It's birdwatching time",
+			"chance": 10
+		},
+		{
+			"image": "image_210",
+			"text": "The best place to hide is always with your favourite person",
+			"chance": 10
+		},
+		{
+			"image": "image_212",
+			"text": "Oh hello ❤",
+			"chance": 10
+		},
+		{
+			"image": "image_213",
+			"text": "Do you like my soft sunshine nest?",
+			"chance": 10
+		},
+		{
+			"image": "image_215",
+			"text": "I'm sleepy, will you sit near me while I fall asleep?",
+			"chance": 10
+		},
+		{
+			"image": "image_216",
+			"text": "This is what it's all about 💖",
+			"chance": 10
+		},
+		{
+			"image": "image_217",
+			"text": "Sometimes the world's a bit scary. We all need a place to hide",
+			"chance": 10
+		},
+		{
+			"image": "image_220",
+			"text": "Just a little belly rub, that's all I want",
+			"chance": 10
+		},
+		{
+			"image": "image_223",
+			"text": "It's very important to inspect",
+			"chance": 10
+		},
+		{
+			"image": "image_224",
+			"text": "Just... just one belly rub? 🥺",
+			"chance": 10
+		},
+		{
+			"image": "image_225",
+			"text": "No. I sleep",
+			"chance": 10
+		},
+		{
+			"image": "image_228",
+			"text": "I am a warm loaf",
+			"chance": 10
+		},
+		{
+			"image": "image_229",
+			"text": "Let's just go back to bed",
+			"chance": 10
+		},
+		{
+			"image": "image_230",
+			"text": "👑",
+			"chance": 10
+		},
+		{
+			"image": "image_237",
+			"text": "Treat time 💥",
+			"chance": 10
+		},
+		{
+			"image": "image_238",
+			"text": "Just a little belly rub?",
+			"chance": 10
+		},
+		{
+			"image": "image_239",
+			"text": "😻",
+			"chance": 10
+		},
+		{
+			"image": "image_240",
+			"text": "Treat, gimme!",
+			"chance": 10
+		},
+		{
+			"image": "image_242",
+			"text": "From here, I can see everything",
+			"chance": 10
+		},
+		{
+			"image": "image_244",
+			"text": "When the world is big and scary, it's good to have a friend",
+			"chance": 10
+		},
+		{
+			"image": "image_245",
+			"text": "My jungle 🌱",
 			"chance": 10
 		}
 	],
@@ -2463,6 +2633,321 @@
 		{
 			"image": "image_184",
 			"text": "Screw it. I'm going back to sleep",
+			"chance": 10
+		},
+		{
+			"image": "image_185",
+			"text": "Sure, the outside looks nice. But I'm safe and comfy in here ❤",
+			"chance": 10
+		},
+		{
+			"image": "image_186",
+			"text": "Don't block my sunlight 🚫",
+			"chance": 10
+		},
+		{
+			"image": "image_187",
+			"text": "Wanna play? 🐾",
+			"chance": 10
+		},
+		{
+			"image": "image_188",
+			"text": "🥺",
+			"chance": 10
+		},
+		{
+			"image": "image_189",
+			"text": "I want to stay here forever 💙",
+			"chance": 10
+		},
+		{
+			"image": "image_190",
+			"text": "So many choices. Do I have a nap, or should I watch out the window?",
+			"chance": 10
+		},
+		{
+			"image": "image_191",
+			"text": "I think my little cousin looks like me. Do you see the resemblance?",
+			"chance": 10
+		},
+		{
+			"image": "image_192",
+			"text": "I'm always watching 👀",
+			"chance": 10
+		},
+		{
+			"image": "image_193",
+			"text": "Shhhhh it's sleeping time",
+			"chance": 10
+		},
+		{
+			"image": "image_194",
+			"text": "Okay, you can join me. Just don't block the sunlight",
+			"chance": 10
+		},
+		{
+			"image": "image_195",
+			"text": "You may laugh, but at least my nose won't escape while I'm asleep",
+			"chance": 10
+		},
+		{
+			"image": "image_196",
+			"text": "👉 🐈",
+			"chance": 10
+		},
+		{
+			"image": "image_197",
+			"text": "You *wish* you were this flexible",
+			"chance": 10
+		},
+		{
+			"image": "image_198",
+			"text": "Ambush!",
+			"chance": 10
+		},
+		{
+			"image": "image_199",
+			"text": "☀💤",
+			"chance": 10
+		},
+		{
+			"image": "image_200",
+			"text": "My sunny perch",
+			"chance": 10
+		},
+		{
+			"image": "image_201",
+			"text": "I sleep here, where the world is small",
+			"chance": 10
+		},
+		{
+			"image": "image_202",
+			"text": "To sleep or to watch? I can't decide",
+			"chance": 10
+		},
+		{
+			"image": "image_203",
+			"text": "Oh hi, you found me!",
+			"chance": 10
+		},
+		{
+			"image": "image_204",
+			"text": "Hello 💕",
+			"chance": 10
+		},
+		{
+			"image": "image_205",
+			"text": "Sleeping on a cloud ☁",
+			"chance": 10
+		},
+		{
+			"image": "image_206",
+			"text": "Mmmmm those are some good chin scratches",
+			"chance": 10
+		},
+		{
+			"image": "image_207",
+			"text": "mlem",
+			"chance": 10
+		},
+		{
+			"image": "image_208",
+			"text": "It's birdwatching time",
+			"chance": 10
+		},
+		{
+			"image": "image_209",
+			"text": "Holding on with my tail",
+			"chance": 10
+		},
+		{
+			"image": "image_210",
+			"text": "The best place to hide is always with your favourite person",
+			"chance": 10
+		},
+		{
+			"image": "image_211",
+			"text": "Reading is fine, but don't forget to give me pats too",
+			"chance": 10
+		},
+		{
+			"image": "image_212",
+			"text": "Oh hello ❤",
+			"chance": 10
+		},
+		{
+			"image": "image_213",
+			"text": "Do you like my soft sunshine nest?",
+			"chance": 10
+		},
+		{
+			"image": "image_214",
+			"text": "I have to watch, in case something happens",
+			"chance": 10
+		},
+		{
+			"image": "image_215",
+			"text": "I'm sleepy, will you sit near me while I fall asleep?",
+			"chance": 10
+		},
+		{
+			"image": "image_216",
+			"text": "This is what it's all about 💖",
+			"chance": 10
+		},
+		{
+			"image": "image_217",
+			"text": "Sometimes the world's a bit scary. We all need a place to hide",
+			"chance": 10
+		},
+		{
+			"image": "image_218",
+			"text": "Couch time ends when I say so",
+			"chance": 10
+		},
+		{
+			"image": "image_219",
+			"text": "You found me! Want to sit nearby for a bit?",
+			"chance": 10
+		},
+		{
+			"image": "image_220",
+			"text": "Just a little belly rub, that's all I want",
+			"chance": 10
+		},
+		{
+			"image": "image_221",
+			"text": "Morning treat yes!",
+			"chance": 10
+		},
+		{
+			"image": "image_222",
+			"text": "Hiiiii 💖",
+			"chance": 10
+		},
+		{
+			"image": "image_223",
+			"text": "It's very important to inspect",
+			"chance": 10
+		},
+		{
+			"image": "image_224",
+			"text": "Just... just one belly rub? 🥺",
+			"chance": 10
+		},
+		{
+			"image": "image_225",
+			"text": "No. I sleep",
+			"chance": 10
+		},
+		{
+			"image": "image_226",
+			"text": "This is one of the best spots in the house",
+			"chance": 10
+		},
+		{
+			"image": "image_227",
+			"text": "Ooh yes chin scratches",
+			"chance": 10
+		},
+		{
+			"image": "image_228",
+			"text": "I am a warm loaf",
+			"chance": 10
+		},
+		{
+			"image": "image_229",
+			"text": "Let's just go back to bed",
+			"chance": 10
+		},
+		{
+			"image": "image_230",
+			"text": "👑",
+			"chance": 10
+		},
+		{
+			"image": "image_231",
+			"text": "Are you awake? It's breakfast time. Wake up! Are you getting up yet?",
+			"chance": 10
+		},
+		{
+			"image": "image_232",
+			"text": "Good belly rubs, oh yes",
+			"chance": 10
+		},
+		{
+			"image": "image_233",
+			"text": "I'm sure there's another biscuit in here somewhere",
+			"chance": 10
+		},
+		{
+			"image": "image_234",
+			"text": "My nest of socks",
+			"chance": 10
+		},
+		{
+			"image": "image_235",
+			"text": "A perfect fit",
+			"chance": 10
+		},
+		{
+			"image": "image_236",
+			"text": "It's a jungle out there. I have to keep an eye on things",
+			"chance": 20
+		},
+		{
+			"image": "image_237",
+			"text": "Treat time 💥",
+			"chance": 10
+		},
+		{
+			"image": "image_238",
+			"text": "Just a little belly rub?",
+			"chance": 10
+		},
+		{
+			"image": "image_239",
+			"text": "😻",
+			"chance": 10
+		},
+		{
+			"image": "image_240",
+			"text": "Treat, gimme!",
+			"chance": 10
+		},
+		{
+			"image": "image_241",
+			"text": "Snug as a cat in a box ❤",
+			"chance": 10
+		},
+		{
+			"image": "image_242",
+			"text": "From here, I can see everything",
+			"chance": 20
+		},
+		{
+			"image": "image_243",
+			"text": "Was that a moth?",
+			"chance": 10
+		},
+		{
+			"image": "image_244",
+			"text": "When the world is big and scary, it's good to have a friend",
+			"chance": 10
+		},
+		{
+			"image": "image_245",
+			"text": "My jungle 🌱",
+			"chance": 10
+		},
+		{
+			"image": "image_246",
+			"text": "Stay still, you're my pillow",
+			"chance": 10
+		},
+		{
+			"image": "image_247",
+			"text": "Hi there 💞",
 			"chance": 10
 		}
 	]
